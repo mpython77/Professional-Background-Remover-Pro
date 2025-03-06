@@ -41,7 +41,7 @@ sudo apt-get install python3-xlib
 ## Usage
 ### Run the Application
 ```bash
-python main.py
+python Remove Background.py
 ```
 ### Steps to Use:
 1. **Open an image**: "File" > "Open Image..." (Ctrl+O) or load from clipboard
@@ -54,7 +54,7 @@ python main.py
 8. **Customize background**: Set format/quality in "Settings" or choose a background color via "Edit" > "Select Background Color..."
 
 ## Code Overview
-### `main.py` Structure
+### `Remove Background.py` Structure
 The application is managed by the `EnhancedBackgroundRemover` class, which handles the GUI and image processing.
 #### Key Functions:
 - **`process_image()`**: Removes the background using `rembg`
