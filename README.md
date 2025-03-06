@@ -54,7 +54,6 @@ python Remove Background.py
 8. **Customize background**: Set format/quality in "Settings" or choose a background color via "Edit" > "Select Background Color..."
 
 ## Screenshots
-![image](https://github.com/user-attachments/assets/16f00fb5-e595-41e7-8a62-81091085b232)
 ![image](https://github.com/user-attachments/assets/2e737f47-33f9-4ef4-a3b5-b42152ecefb8)
 
 
