@@ -16,8 +16,8 @@ Professional Background Remover Pro is a Python-based desktop application for re
 ## Installation
 ### Clone the Repository:
 ```bash
-git clone https://github.com/[your-username]/professional-background-remover-pro.git
-cd professional-background-remover-pro
+git clone https://github.com/mpython77/Professional-Background-Remover-Pro.git
+cd Professional-Background-Remover-Pro
 ```
 ### Install Python (if not installed)
 Ensure you have Python 3.7+ installed. [Download Python](https://www.python.org/downloads/).
@@ -75,21 +75,7 @@ The application is managed by the `EnhancedBackgroundRemover` class, which handl
 - **Clipboard issues**: Ensure Pillow supports `ImageGrab`
 - **Slow performance**: Check system resources and restart the application
 
-## Contributing
-1. **Fork the repository**
-2. **Create a new branch**:
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-3. **Commit your changes**:
-   ```bash
-   git commit -m "Add feature"
-   ```
-4. **Push the changes**:
-   ```bash
-   git push origin feature/your-feature
-   ```
-5. **Submit a pull request**
+
 
 ## License
 This project is licensed under the **MIT License** (see LICENSE file).
@@ -99,11 +85,4 @@ This project is licensed under the **MIT License** (see LICENSE file).
 - `Pillow` for image processing
 - `tkinter` for the GUI
 
-## Instructions for Use
-1. **Copy this entire text**.
-2. **Create a file named `README.md`** in your GitHub repository.
-3. **Paste the text** into `README.md`.
-4. **Replace `[your-username]`** with your actual GitHub username.
-5. **Save and commit** the file.
 
-This README provides a clean and structured overview of the project. Let me know if you need any modifications!
