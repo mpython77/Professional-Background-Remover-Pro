@@ -1,93 +1,108 @@
-# Professional Background Remover Pro
+# Professional Background Remover Pro v2.1
 
-## Overview
-Professional Background Remover Pro is a Python-based desktop application for removing image backgrounds with additional editing features. It provides a user-friendly interface with functionalities such as cropping, rotating, flipping, zooming, and batch processing. The application is built using `rembg` for AI-powered background removal and `tkinter` for the graphical interface.
+🖼️ **AI-powered professional background removal tool** — rembg (U2-Net) asosida rasmlardan fonni avtomatik olib tashlash, tahrirlash, va eksport qilish.
 
-## Features
-- **AI-powered background removal** for images
-- **Editing tools**: Crop, rotate, flip, zoom
-- **Undo last action** (Ctrl+Z)
-- **Batch processing** for multiple images
-- **Clipboard support**: Load images directly from clipboard
-- **Save options**: PNG or JPEG with adjustable quality
-- **Compare original and processed images**
-- **Custom background color selection**
+## ✨ Features
 
-## Installation
-### Clone the Repository:
+### Core
+- 🤖 **AI Background Removal** — U2-Net modeli orqali yuqori sifatli fon olib tashlash
+- 📦 **Batch Processing** — bir nechta rasmni ketma-ket qayta ishlash (cancel bilan)
+- 📋 **Clipboard Support** — clipboard'dan rasm yuklash
+
+### Editing
+- ↩️ **Undo / Redo** — cheksiz bekor qilish va qaytarish (limit=20)
+- ✂️ **Crop** — interaktiv rasm kesish
+- 🔄 **Rotate** — 0-360° aylantirish
+- 🔀 **Flip** — gorizontal va vertikal aks ettirish
+- 💧 **Watermark** — matnli watermark (5 pozitsiya, opacity, font size)
+
+### Filters
+- ☀️ Brightness / 🔲 Contrast / 🎭 Saturation / 🔍 Sharpness
+- Blur / Sharpen / Edge Enhance / Emboss
+- 🎨 **Grayscale** — qora-oq rejim
+- 🔄 **Invert Colors** — ranglarni teskari qilish
+- ✨ **Auto Enhance** — avtomatik rasm optimallash
+
+### Export
+- 📤 **Export Presets**: Web (72 DPI), Print (300 DPI), Social (1080px), Thumbnail (256px)
+- PNG / JPEG / WEBP / BMP formatlar
+- Sifat sozlash (1-100%)
+
+### UI
+- 🌓 **Dark / Light Mode** — professional tema tizimi
+- 📜 **History Panel** — amallar tarixi
+- ⌨️ **Shortcuts Panel** — tezkor tugmalar
+- 📊 **Image Info** — o'lcham, format, EXIF ma'lumotlari
+- 📂 **Recent Files** — oxirgi 10 fayl
+
+---
+
+## 🏗️ Architecture (MVC)
+
+```
+Professional-Background-Remover-Pro/
+├── main.py                 ← Entry point
+├── requirements.txt
+├── .gitignore
+├── core/                   ← Business Logic
+│   ├── image_processor.py   (AI removal, lazy rembg, cancel, batch)
+│   ├── image_editor.py      (Undo/Redo deque, 12+ filters, watermark)
+│   └── export_manager.py    (Multi-format, presets, DPI)
+├── ui/                     ← Presentation Layer
+│   ├── main_window.py       (Main coordinator)
+│   ├── themes.py            (Dark/Light theme system)
+│   ├── panels.py            (Input, Settings, Filter, Actions, Display)
+│   ├── dialogs.py           (Rotate, Flip, Crop, Compare, Export, Watermark, Info)
+│   └── history_panel.py     (History + Shortcuts panels)
+├── config/                 ← Configuration
+│   └── config_manager.py    (JSON config, validation, recent files)
+├── utils/                  ← Utilities
+│   ├── helpers.py           (EXIF, debounce, file ops)
+│   └── logger.py            (Singleton logger, file+console)
+└── tests/                  ← Test Suite (90+ tests)
+    ├── test_image_editor.py
+    ├── test_config.py
+    ├── test_export.py
+    ├── test_helpers.py
+    └── test_logger.py
+```
+
+---
+
+## 🚀 Quick Start
+
 ```bash
+# Clone
 git clone https://github.com/mpython77/Professional-Background-Remover-Pro.git
 cd Professional-Background-Remover-Pro
-```
-### Install Python (if not installed)
-Ensure you have Python 3.7+ installed. [Download Python](https://www.python.org/downloads/).
 
-### Install Dependencies
-Install required libraries:
-```bash
-pip install Pillow rembg numpy
-```
-Or use `requirements.txt`:
-```bash
+# Install
 pip install -r requirements.txt
+
+# Run
+python main.py
 ```
 
-### Clipboard Support (Linux - Optional)
-If you are using Linux, install `python3-xlib` for clipboard functionality:
-```bash
-sudo apt-get install python3-xlib
-```
+## ⌨️ Shortcuts
 
-## Usage
-### Run the Application
-```bash
-python Remove Background.py
-```
-### Steps to Use:
-1. **Open an image**: "File" > "Open Image..." (Ctrl+O) or load from clipboard
-2. **Remove background**: "Edit" > "Remove Background" (Ctrl+P)
-3. **Edit the image**: Crop, rotate, flip via the "Edit" menu
-4. **Zoom options**: "View" > Zoom In/Out/Reset
-5. **Undo changes**: "Edit" > "Undo" (Ctrl+Z)
-6. **Save the processed image**: "File" > "Save..." (Ctrl+S)
-7. **Batch process multiple images**: "Batch" > "Process Multiple Images..."
-8. **Customize background**: Set format/quality in "Settings" or choose a background color via "Edit" > "Select Background Color..."
+| Key | Action |
+|-----|--------|
+| `Ctrl+O` | Open Image |
+| `Ctrl+S` | Save |
+| `Ctrl+P` | Remove Background |
+| `Ctrl+Z` | Undo |
+| `Ctrl+Y` | Redo |
+| `Ctrl+±` | Zoom In/Out |
+| `Ctrl+0` | Reset Zoom |
+| `Esc` | Cancel Processing |
 
-## Screenshots
-![image](https://github.com/user-attachments/assets/2e737f47-33f9-4ef4-a3b5-b42152ecefb8)
+## 📋 Requirements
 
+- Python 3.8+
+- Pillow
+- rembg
+- numpy
 
+## 📄 License
 
-## Code Overview
-### `Remove Background.py` Structure
-The application is managed by the `EnhancedBackgroundRemover` class, which handles the GUI and image processing.
-#### Key Functions:
-- **`process_image()`**: Removes the background using `rembg`
-- **`crop_image()`**: Allows interactive cropping
-- **`rotate_image(angle)`**: Rotates the image
-- **`flip_image()`**: Flips image horizontally or vertically
-- **`undo()`**: Reverts the last edit
-- **`batch_process()`**: Processes multiple images at once
-- **`display_*()`**: Updates the GUI canvas with images
-
-## Requirements
-- **Python 3.7+**
-- **Libraries**: Pillow, rembg, numpy
-- **Optional**: `python3-xlib` (for clipboard support on Linux)
-
-## Troubleshooting
-- **Module not found (`rembg`)**: Run `pip install rembg`
-- **Clipboard issues**: Ensure Pillow supports `ImageGrab`
-- **Slow performance**: Check system resources and restart the application
-
-
-
-## License
-This project is licensed under the **MIT License** (see LICENSE file).
-
-## Acknowledgments
-- `rembg` for AI-powered background removal
-- `Pillow` for image processing
-- `tkinter` for the GUI
-
-
+MIT License — see [LICENSE](LICENSE)
